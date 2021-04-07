@@ -12,7 +12,7 @@ def main():
     wanMeans = (25, 32, 34, 20) #WAN length of outage (min)
     ind = np.arange(N)    # the x locations for the groups
     # the width of the bars: can also be len(x) sequence
-    width = 0.35
+    width = 0.3
 
     # describe where to display p1
     p1 = plt.bar(ind, localnetMeans, width)
@@ -21,7 +21,7 @@ def main():
 
     # Describe the table metadata
     plt.ylabel("Length of Outage (mins)")
-    plt.title("2018 Network Summary")
+    plt.title("2018 Networking Summary")
     plt.xticks(ind, ("Q1", "Q2", "Q3", "Q4"))
     plt.yticks(np.arange(0, 81, 10))
     plt.legend((p1[0], p2[0]), ("LAN", "WAN"))
