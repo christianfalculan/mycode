@@ -34,25 +34,22 @@ def main():
         # print current price of Bitcoin
         btc.write(f"{rate}\n")
 
+        # define graph variables using output from btcdata
         x = time
-        y = rate
+        y = float(f"{rate}")
 
-        # use the plot function
-        plt.plot(x , y)
+        # make the graph
+        plt.plot(x, y)
 
-        # show the graph
-        plt.show()
-        plt.plot(hourly_perf_total)
-        plt.xticks(np.arange(0, n_results + 1, 24.0))
+        #stuck ???
+        plt.xticks(np.arange(????)
+
         plt.ylabel('Current Price')
         plt.xlabel('Time')
+        plt.ylim(1,70,00)
+        plt.xlim(1,8)
         title = 'Bitcoin Price Updates'
         plt.title(title)
-
-        # log y axis
-        plt.semilogy()
-        plt.grid(True)
-
         plt.show()
 
 
