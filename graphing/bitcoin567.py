@@ -23,38 +23,17 @@ def main():
         # print("this goes into the file", file=btc)
 
         # write current timestamp & BTC to USD price from captured data
-        # print(btcdata.get("time").get("updated"), file=btc)
-        # print(btcdata.get("bpi").get("USD").get("rate"), file=btc)
 
         time = btcdata.get("time").get("updated")
-        rate = btcdata.get("bpi").get("USD").get("rate")
+        price = btcdata.get("bpi").get("USD").get("rate")
 
         # print current timestamp
         btc.write(f"{time}\n")
         # print current price of Bitcoin
-        btc.write(f"{rate}\n")
-
-        # define graph variables using output from btcdata
-        x = time
-        y = rate
-
-        # make the graph
-        plt.plot(x, y)
-
-        #stuck ???
-        plt.xticks(np.arange(0, 24, 1))
-        plt.yticks(np.arange(0, 75000, 10000))
-        plt.ylabel('Current Price')
-        plt.xlabel('Time')
-        plt.ylim(1,70,00)
-        plt.xlim(1,8)
-        title = 'Bitcoin Price Updates'
-        plt.title(title)
-        plt.show()
+        btc.write(f"{price}\n")
 
 
-        plt.savefig("/home/student/mycode/graphing/bitcoin_data")
-        print("Graph created.")
+        print(f"{time}")
+        print(f"{price}")
 
-    
 main()
