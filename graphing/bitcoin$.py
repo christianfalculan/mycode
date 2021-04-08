@@ -36,14 +36,14 @@ def main():
 
         # define graph variables using output from btcdata
         x = time
-        y = float(f"{rate}")
+        y = rate
 
         # make the graph
         plt.plot(x, y)
 
         #stuck ???
-        plt.xticks(np.arange(????)
-
+        plt.xticks(np.arange(0, 24, 1))
+        plt.yticks(np.arange(0, 75000, 10000))
         plt.ylabel('Current Price')
         plt.xlabel('Time')
         plt.ylim(1,70,00)
@@ -53,7 +53,8 @@ def main():
         plt.show()
 
 
+        plt.savefig("/home/student/mycode/graphing/bitcoin_data")
+        print("Graph created.")
 
-
-
+    
 main()
