@@ -1,0 +1,4 @@
+#!/usr/bin/python
+issnow = {"message": "success", "timestamp": 1617722158, "iss_position": {"longitude": "136.3817", "latitude": 
+
+print(f"At, {issnow.get("timestamp") } this iss is:")
