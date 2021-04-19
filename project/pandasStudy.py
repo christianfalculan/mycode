@@ -19,7 +19,7 @@ def new_employee():
     input_name = input("\nWho is this new hire? ")
     input_position = input("What is their position? ")
     input_phonenumber = input("What is their contact information? ")
-    input_thoughts = input("Are they cool? ")
+    input_thoughts = input("Should we hire this person? ")
     d = {"Name": input_name, "Position": input_position, "Phonenumber": input_phonenumber, "Thoughts": input_thoughts}
     return d
 
@@ -28,7 +28,7 @@ def new_client():
     input_client = input("\nWhat is the name of the new client? ")
     input_value = input("How much business do they provide? ")
     input_poc = input("Who is their point of contact? ")
-    input_number = input("What is their number to be reached? ")
+    input_number = input("What is their contact number? ")
     d = {"Client": input_client, "Value": input_value, "POC": input_poc, "Number": input_number}
     return d
 
@@ -69,6 +69,7 @@ def main():
 
     # use pandas to create a dataframe
     df = pd.DataFrame(mylistdict)
+    print(df)
 
     # save out "old" Excel format (*.xls)
     df.to_excel(f"output/{filename}.xls")
@@ -88,9 +89,9 @@ def main():
     fig.patch.set_visible(False)
     ax.axis('off')
     ax.axis('tight')
-
+    
     # create a table
-    table = ax.table(cellText=df.values)#, colLabels=df.keys)
+    table = ax.table(cellText=df.values, colLabels=df.columns, loc='center')
 
     # save table
     fig.tight_layout()
