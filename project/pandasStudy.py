@@ -4,6 +4,7 @@
 
 ## python3 -m pip install pandas
 import pandas as pd
+import pyexcel
 
 # these following two lines are for writing to file
 # use this when you are not rendering to a window
@@ -13,23 +14,24 @@ matplotlib.use('Agg')
 # create some graphs
 import matplotlib.pyplot as plt
 
+
 # Request data from user
-# Data for new employee
-def new_employee():
-    input_name = input("\nWho is this new hire? ")
-    input_position = input("What is their position? ")
-    input_phonenumber = input("What is their contact information? ")
-    input_thoughts = input("Should we hire this person? ")
-    d = {"Name": input_name, "Position": input_position, "Phonenumber": input_phonenumber, "Thoughts": input_thoughts}
+# Data for Name a challenge you overcame
+def challenges():
+    input_situation = input("\nWhat was the situation? ")
+    input_challenge = input("How did you process this challenge? ")
+    input_solution = input("What was your solution? ")
+    input_resolution = input("How was it resolved? ")
+    d = {"Situation": input_situation, "Task": input_challenge, "Action": input_solution, "Result": input_resolution}
     return d
 
-# Data for new clients
-def new_client():
-    input_client = input("\nWhat is the name of the new client? ")
-    input_value = input("How much business do they provide? ")
-    input_poc = input("Who is their point of contact? ")
-    input_number = input("What is their contact number? ")
-    d = {"Client": input_client, "Value": input_value, "POC": input_poc, "Number": input_number}
+# Data for Name a failure you overcame
+def failure():
+    input_event = input("\nWhat went wrong? ")
+    input_response = input("How did you handle it? ")
+    input_action = input("What was your solution? ")
+    input_ending = input("How did it all end? ")
+    d = {"Situation": input_event, "Task": input_response, "Action": input_action, "Result": input_ending}
     return d
 
 # Use user input to create data for excel
@@ -41,15 +43,15 @@ def main():
     
 
     while True:
-        # determine if user is adding a new employee or client
-        new_entry = input("\nIs this a new employee or client? ")
+        # determine if user is adding a new question
+        new_entry = input("\nWhich interview question would you like to answer? (Short Responses Please) \n 1. Tell me about a time you overcame a challenge.\n 2. Tell me about a time you overcame failure.\n -->  ")
 
         # determine how to handle user input
-        if new_entry == 'employee':
-            result = new_employee()
+        if new_entry == '1':
+            result = challenges()
 
-        elif new_entry == 'client':
-            result = new_client()
+        elif new_entry == '2':
+            result = failure()
 
         else:
             print("Sorry, that is not an option")
@@ -58,7 +60,7 @@ def main():
         # building out our list we want to place into xls
         mylistdict.append(result)
     
-        keep_going = input("\nWould you like to add another? Enter to continue, or enter 'q' to quit: ")
+        keep_going = input("\nWould you like to answer another interview question? Enter to continue, or enter 'q' to quit: ")
         if keep_going.lower() == 'q':
            break
 
@@ -91,8 +93,8 @@ def main():
     ax.axis('tight')
     
     # create a table
-    table = ax.table(cellText=df.values, colLabels=df.columns, loc='center')
-
+    table = ax.table(cellText=df.values, colLabels=df.columns, loc='center', cellLoc='center')
+    
     # save table
     fig.tight_layout()
     plt.savefig(f'output/{filename}.png')
